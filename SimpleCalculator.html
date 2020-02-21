@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title>Simple Calculator</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="./resources/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="./resources/form-validation.css" rel="stylesheet">
+  <style>
+    .rightLeftArrow {
+      width: 6%;
+      height: 6%;
+      margin: auto;
+      display: inline-block;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+  </style>
+
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>Hydraulic Pump Power Calculator</h2>
+      <p class="lead">The ideal hyudraulic power to drive a pump depends on 1. the mass flow rate, 2. liquid density, 3.
+        Differential height</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Please enter required details</h4>
+        <form id="PowerForm" class="needs-validation" novalidate="">
+
+          <div class="mb-3">
+            <label for="txtFlow">Flow Rate</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Cubic meter per hour</span>
+              </div>
+              <input type="text" class="form-control" id="txtFlowMeterCube" placeholder="Ex: 135 qubic meter per hour"
+                required="">
+              <img class="rightLeftArrow" src="./resources/right-and-left-arrows.png" alt="rightLeftArrow">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Sa'a per minute</span>
+              </div>
+              <input type="text" class="form-control" id="txtFlowSahCube" placeholder="Ex: 135 Sa'a per minute"
+                required="">
+              <div class="invalid-feedback" style="width: 100%;">
+                Flow value is required
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="txtDensity">Density of Fluid</label>
+            <input type="text" class="form-control" id="txtDensity" placeholder="Ex: 1000 kg per meter cube"
+              required="">
+            <div class="invalid-feedback">
+              Density value is required
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="txtGravity">Gravity</label>
+            <input type="text" class="form-control" id="txtGravity" placeholder="Ex: 9.81 meter per second square"
+              required="">
+            <div class="invalid-feedback">
+              Please enter gravity value.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="txtDifferentialHead">Differential Head</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <select class="custom-select" id="ddLengthCalculator">
+                  <option value="meter" selected>meter</option>
+                  <option value="feet">feet</option>
+                </select>
+              </div>
+              <input type="text" class="form-control" id="txtDifferentialHead" placeholder="Ex: 33 meters or feet"
+                required="">
+              <div class="invalid-feedback">
+                Please enter Differential Head value
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="txtPumpEfficiency">Pump Efficiency</label>
+            <input type="text" class="form-control" id="txtPumpEfficiency" placeholder="Ex: 0.6" required="">
+            <div class="invalid-feedback">
+              Please enter Pump Efficiency value
+            </div>
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-md-10">
+                <button id="btnCalculate" class="btn btn-primary btn-lg" type="submit">Calculate Power required</button>
+              </div>
+              <div class="col-md-2">
+                <button id="btnClear" type="button" class="btn btn-secondary btn-lg">Clear</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-4 order-md-2 mb-4" style="margin-top: 35%;">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Power Required</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between">
+            <div class="row">
+              <span>Hydraulic Power<small class="text-danger">(kw):</small></span>
+              <strong>
+                <div id="kwPower">0</div>
+              </strong>
+              <span>Hydraulic Power<small class="text-danger">(hp):</small></span>
+              <strong>
+                <div id=hpPower>0</div>
+              </strong>
+            </div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <div class="row">
+              <span>Shaft Power<small class="text-danger">(kw): </small></span>
+              <strong>
+                <div id="kwShaftPower">0</div>
+              </strong>
+              <span>Shaft Power<small class="text-danger">(hp): </small></span>
+              <strong>
+                <div id=hpShaftPower>0</div>
+              </strong>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="mb-2">
+
+    <div class="row">
+
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">© 2017-2018 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="./resources/jquery-3.2.1.slim.min.js"></script>
+  <script src="./resources/popper.min.js"></script>
+  <script src="./resources/bootstrap.min.js"></script>
+  <script src="./resources/holder.min.js"></script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+
+      document.getElementById('btnClear').addEventListener('click', function (event) {
+        document.getElementById("PowerForm").reset();
+        document.getElementById("PowerForm").classList.remove('was-validated');
+        document.getElementById('kwPower').innerHTML = 0;
+        document.getElementById('hpPower').innerHTML = 0;
+        document.getElementById('kwShaftPower').innerHTML = 0;
+        document.getElementById('hpShaftPower').innerHTML = 0;
+      });
+
+      document.getElementById("txtFlowMeterCube").addEventListener("focusout", function (event) {
+        var valCal = (document.getElementById("txtFlowMeterCube").value) / (5.20833333);
+        document.getElementById("txtFlowSahCube").value = (Math.round(valCal * 100) / 100).toFixed(2);
+      });
+
+      document.getElementById("txtFlowSahCube").addEventListener("focusout", function (event) {
+        var valCal = document.getElementById("txtFlowSahCube").value * (5.20833333);
+        document.getElementById("txtFlowMeterCube").value = (Math.round(valCal * 100) / 100).toFixed(2);
+      });
+
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            } else {
+              // everthing is looking good now calculate!!!!!
+              event.preventDefault();
+              event.stopPropagation();
+              CalculatePower();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+
+      function CalculatePower() {
+        var Flow = document.getElementById('txtFlowMeterCube').value;
+        var Density = document.getElementById('txtDensity').value;
+        var Gravity = document.getElementById('txtGravity').value;
+        var DifferentialHead = document.getElementById('txtDifferentialHead').value;
+        if (document.getElementById('ddLengthCalculator').value === 'feet') {
+          DifferentialHead = DifferentialHead * 3.28;
+        }
+        var PumpEfficiency = document.getElementById('txtPumpEfficiency').value;
+        console.log('flow-', Flow, ',Density-', Density, ',Gravity-', Gravity, ',Diffferential Head:',
+          DifferentialHead, ',PumpEfficeincy:', PumpEfficiency);
+        var Pkw = (Flow * Density * Gravity * DifferentialHead) / (3.6 * 1000000);
+        var ShaftPkm = Pkw / PumpEfficiency;
+        document.getElementById('kwPower').innerHTML = (Math.round(Pkw * 100) / 100).toFixed(2);
+        document.getElementById('hpPower').innerHTML = (Math.round((Pkw / 0.746) * 100) / 100).toFixed(2);
+
+        document.getElementById('kwShaftPower').innerHTML = (Math.round(ShaftPkm * 100) / 100).toFixed(2);
+        document.getElementById('hpShaftPower').innerHTML = (Math.round((ShaftPkm / 0.746) * 100) / 100).toFixed(2);
+
+        return false;
+      }
+
+    })();
+  </script>
+
+
+</body>
+
+</html>
