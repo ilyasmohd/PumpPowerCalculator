@@ -190,12 +190,12 @@
       });
 
       document.getElementById("txtFlowMeterCube").addEventListener("focusout", function (event) {
-        var valCal = (document.getElementById("txtFlowMeterCube").value) / (5.20833333);
+        var valCal = (document.getElementById("txtFlowMeterCube").value) * (5.20833333);
         document.getElementById("txtFlowSahCube").value = (Math.round(valCal * 100) / 100).toFixed(2);
       });
 
       document.getElementById("txtFlowSahCube").addEventListener("focusout", function (event) {
-        var valCal = document.getElementById("txtFlowSahCube").value * (5.20833333);
+        var valCal = document.getElementById("txtFlowSahCube").value / (5.20833333);
         document.getElementById("txtFlowMeterCube").value = (Math.round(valCal * 100) / 100).toFixed(2);
       });
 
@@ -225,7 +225,7 @@
         var Gravity = document.getElementById('txtGravity').value;
         var DifferentialHead = document.getElementById('txtDifferentialHead').value;
         if (document.getElementById('ddLengthCalculator').value === 'feet') {
-          DifferentialHead = DifferentialHead * 3.28;
+          DifferentialHead = DifferentialHead / 3.28;
         }
         var PumpEfficiency = document.getElementById('txtPumpEfficiency').value;
         console.log('flow-', Flow, ',Density-', Density, ',Gravity-', Gravity, ',Diffferential Head:',
